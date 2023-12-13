@@ -1,0 +1,11 @@
+{
+	"version": 2,
+	"updates": [
+		{
+			"ecosystem": "docker",
+			"file": "Dockerfile",
+			"pathRoot": "./",
+			"schedule": "daily"
+		}
+	]
+}
