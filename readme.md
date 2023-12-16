@@ -2,7 +2,7 @@
 
 # Dependabot Generator
 
-A simple, Node-powered `dependabot.yml` generator
+A simple, template-based, Node-powered `dependabot.yml` generator
 
 ## Table of Contents
 - [Dependabot Generator](#dependabot-generator)
