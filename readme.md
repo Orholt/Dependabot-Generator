@@ -1,4 +1,4 @@
-<img src="https://github.com/Orholt/DependabotGenerator/raw/master/docs/banner.png">
+![](.images/banner.png)
 
 # Dependabot Generator
 
