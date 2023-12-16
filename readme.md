@@ -16,6 +16,7 @@ A simple, template-based, Node-powered `dependabot.yml` generator
       - [Misc](#misc)
   - [Technologies](#technologies)
   - [Usage](#usage)
+    - [Creating template](#creating-template)
 
 ## About the Project
 This project is a simple Node-powered `dependabot.yml` generator. It is designed to be used in conjunction with [Dependabot](https://dependabot.com/), a GitHub app that automates dependency updates. 
@@ -79,4 +80,28 @@ From scratch I used JavaScript but due to fact that I wanted to have some type s
 **I wrote this as Draft and proof of concept, so I will clean my code and add some tests later on.**
 
 ## Usage
+
+1. Install [Node.js](https://nodejs.org/en/download) (version 18.10.0 or later)
+2. Clone this repository
+```bash
+git clone https://github.com/Orholt/Dependabot-Generator.git
+```
+3. Install dependencies
+```bash
+npm install
+```
+4. Run the project
+```bash
+npm start
+```
+
+**Note:** You can also use `npm start map` to run the project (this will map template).
+
+**Note:** You can also use `npm start map --path <path>` to run the project (this will map template from provided project path).
+
+### Creating template
+
+1. Create a new file in `.github` folder named `dependabot_template.json`
+
+2. Follow template schema described in [Template documentation](./docs/template.md)
 

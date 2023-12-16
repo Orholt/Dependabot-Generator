@@ -19,7 +19,6 @@ program
     .option('-p, --path <path>', 'Path to your project', './')
     .action(async (p) => {
         console.log('🤖 Mapping dependabot template');
-        console.log(process.env.DEBUG)
 
         console.log(`🔍 Searching for .github folder in ${p.path}`);
         await checkFileExist(p.path);
