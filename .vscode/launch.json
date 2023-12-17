@@ -12,6 +12,7 @@
           "--esm" 
         ],
         "program": "${file}",
+        "args": ["map"],
         "cwd": "${workspaceRoot}",
         "internalConsoleOptions": "openOnSessionStart",
         "skipFiles": ["<node_internals>/**", "node_modules/**"]

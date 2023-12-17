@@ -3,6 +3,7 @@ import path from "path";
 import { DebugLogger } from "./debug_logger";
 import { Ecosystem } from "../models/enums";
 import { ecosystemToFileName } from "./ecosystem_to_file_name";
+import ora from "ora";
 
 export const startFileSearch = async (
   baseDir: string = "./",
@@ -12,7 +13,7 @@ export const startFileSearch = async (
 };
 
 export interface SearchResult {
-  fileName: string;
+  fileName: string[];
   ecosystem: Ecosystem | null;
   path: string;
 }
@@ -25,27 +26,28 @@ const searchDirectories = (
   DebugLogger.log("searchDirectories", "DEBUG");
 
   DebugLogger.log("baseDir: " + baseDir, "DEBUG");
+  const spinner = ora(`Searching paths for ecosystem ${Ecosystem[ecosystem]} ...`).start();
   const toSearch = ecosystemToFileName(ecosystem);
   DebugLogger.log("toSearch: " + toSearch, "DEBUG");
 
-  return new Promise((resolve, reject) => {
+  return new Promise<SearchResult[]>((resolve, reject) => {
     const results: string[] = [];
 
-    function search(dir: string) {
+    function search(dir: string, fileName: string) {
       const files = fs.readdirSync(dir);
 
       for (const file of files) {
         const filePath = path.join(dir, file);
 
         if (fs.statSync(filePath).isDirectory()) {
-          search(filePath);
-        } else if (file === toSearch) {
+          search(filePath, fileName);
+        } else if (file === fileName) {
           results.push(path.dirname(filePath)); // Use path.dirname to get the directory path
         }
       }
     }
 
-    search(baseDir);
+    toSearch.forEach((fileName) => search(baseDir, fileName));
 
     for (let index = 0; index < results.length; index++) {
       const element = results[index];
@@ -54,6 +56,8 @@ const searchDirectories = (
       results[index] = element.replace(/\\/g, "/");
       results[index] = "/" + results[index];
     }
+
+    spinner.succeed(`Found ${results.length} paths for ecosystem ${Ecosystem[ecosystem]}`);
 
     const toReturn = results.map((el) => {
       return {

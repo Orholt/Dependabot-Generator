@@ -34,6 +34,7 @@ program
         const mapper = new DependabotMapper(template);
         console.log(`📄➡️📝 Mapping template`);
         await oraPromise(mapper.map(), "Mapping updates");
+        console.log(`📝 Template mapped`);
     });
 
 program.parse(process.argv);

@@ -1,9 +1,9 @@
 import { Ecosystem } from "../models/enums";
 
-export const ecosystemToFileName = (ecosystem: Ecosystem): string => {
+export const ecosystemToFileName = (ecosystem: Ecosystem): string[] => {
     switch (ecosystem) {
       case Ecosystem.docker:
-        return "Dockerfile";
+        return ["Dockerfile", "dockerfile"];
       // case Ecosystem.npm:
       //   return "package.json";
       // case Ecosystem.pip:
@@ -13,6 +13,6 @@ export const ecosystemToFileName = (ecosystem: Ecosystem): string => {
       // case Ecosystem.gradle:
       //   return "build.gradle";
       default:
-        return "";
+        throw new Error("Ecosystem not supported");
     }
   };
