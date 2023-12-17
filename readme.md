@@ -43,6 +43,8 @@ I wanted to be able to generate `dependabot.yml` by just providing project path,
 
 #### Dependencies
 
+- [x] Multiple file name support (for ex. `Dockerfile` and `dockerfile`)
+
 - [x] Docker support ( Dockerfile )
 - [ ] Npm support ( package.json )
 - [ ] Pip support ( requirements.txt )
